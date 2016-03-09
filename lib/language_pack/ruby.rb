@@ -764,6 +764,8 @@ params = CGI.parse(uri.query || "")
   # @note execjs will blow up if no JS RUNTIME is detected and is loaded.
   # @return [Array] the node.js binary path if we need it or an empty Array
   def add_node_js_binary
+    puts "has execjs #{bundler.has_gem?('execjs')}"
+    puts "node_preinstalled? #{node_js_installed?}"
     bundler.has_gem?('execjs') && node_not_preinstalled? ? [@node_installer.binary_path] : []
   end
 
